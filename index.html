@@ -1,0 +1,80 @@
+<!--
+/* Copyright (c) 2023 Promineo Tech 
+
+Author:  Juan Mejia
+
+Week 11 - Coding Assignment
+
+----------------------------------------------------
+
+Coding Steps:
+- Using any of the tools you've worked with so far, create a game of Tic-Tac-Toe.
+    - Create a Tic-Tac-Toe game grid using your HTML element of choice.
+    - When a cell in the grid is clicked, an X or O should appear in that spot depending on whose turn it is.
+    - A heading should say whether it is X's or O's turn and change with each move made.
+    - A button should be available to clear the grid and restart the game.
+    - When a player has won, or the board is full and the game results in a draw, a Bootstrap alert or similar Bootstrap component should appear across the screen announcing the winner.
+*/
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
+
+    <!-- Include Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main container with top margin -->
+    <div class="container mt-5">
+        <!-- Page Title -->
+        <h1 class="text-center mb-4">Tic-Tac-Toe Game</h1>
+        <!-- Turn Indicator -->
+        <h2 id="turnText" class="text-center mb-4">It's X's turn</h2>
+
+        <!-- Center the game board in a row -->
+        <div class="row justify-content-center">
+            <div class="col-9 col-md-6 justify-content-center">
+                <!-- Game board with cells -->
+                <div class="board justify-content-center">
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restart Game Button -->
+        <div class="text-center mt-4">
+            <button id="resetBtn" class="btn btn-primary">Restart Game</button>
+        </div>
+
+        <!-- Alert for Game Result (hidden by default) -->
+        <div id="resultAlert" class="alert alert-dismissible mt-4 d-none">
+            <button type="button" class="close" data-dismiss="alert">
+                &times;
+            </button>
+            <strong id="resultText"></strong>
+        </div>
+    </div>
+
+    <!-- Include jQuery and Bootstrap JavaScript -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Include Custom JavaScript for the game -->
+    <script src="script.js"></script>
+</body>
+</html>

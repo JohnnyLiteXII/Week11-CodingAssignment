@@ -1,0 +1,137 @@
+/* Set the box-sizing property for all elements and their pseudo-elements */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+/* Define CSS custom properties for cell and mark sizes */
+:root {
+  --cell-size: 100px;
+  --mark-size: calc(var(--cell-size) * 0.9);
+}
+
+/* Apply styles to the body element */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  background-color: #f0f0f0;
+}
+
+/* Styling for the game board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, var(--cell-size));
+  grid-gap: 5px;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for individual cells within the game board */
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  user-select: none;
+  background-color: #f0f0f0;
+}
+
+/* Remove specific borders for certain cells to create a tic-tac-toe grid */
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+/* Styling for X and O marks */
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
+
+/* Pseudo-elements to create X marks and circles */
+.cell.x::before,
+.cell.x::after,
+.cell.circle::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: var(--mark-size);
+  background-color: #000;
+}
+
+/* Rotate X marks */
+.cell.x::before,
+.cell.x::after {
+  transform: rotate(45deg);
+}
+
+/* Pseudo-elements to create circle marks */
+.cell.circle::before,
+.cell.circle::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  width: var(--mark-size);
+  height: var(--mark-size);
+  background-color: transparent;
+}
+
+/* Styling for the winning message overlay */
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* Styling for the restart button in the winning message */
+.winning-message button {
+  font-size: 1.5rem;
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Hover effect for the restart button */
+.winning-message button:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Show the winning message overlay */
+.winning-message.show {
+  display: flex;
+  z-index: 1;
+}
